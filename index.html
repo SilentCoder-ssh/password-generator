@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Password generator</title>
+  </head>
+  <body class="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div class="min-h-screen bg-slate-100 flex justify-center items-center">
+      <div class="bg-white p-8 rounded-lg shadow-sm w-96">
+        <h1 class="text-xl text-gray-700 mb-6 text-center">
+          Password Generator
+        </h1>
+
+        <div class="mb-4">
+          <input
+            id="password-output"
+            type="text"
+            readonly
+            class="w-full p-2 bg-gray-50 rounded border text-center"
+            placeholder="Password"
+          />
+        </div>
+
+        <div class="mb-4">
+          <label class="text-sm text-gray-600 block mb-2">
+            Length: <span id="length-value">12</span>
+          </label>
+          <input
+            id="length-range"
+            type="range"
+            min="8"
+            max="32"
+            value="12"
+            class="w-full"
+          />
+        </div>
+
+        <div class="space-y-2 mb-6">
+          <div>
+            <input id="uppercase" type="checkbox" checked />
+            <label class="text-sm text-gray-600 ml-2">Uppercase</label>
+          </div>
+          <div>
+            <input id="numbers" type="checkbox" checked />
+            <label class="text-sm text-gray-600 ml-2">Numbers</label>
+          </div>
+          <div>
+            <input id="symbols" type="checkbox" checked />
+            <label class="text-sm text-gray-600 ml-2">Symbols</label>
+          </div>
+        </div>
+
+        <button
+          id="generate"
+          class="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
+        >
+          Generate
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
