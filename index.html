@@ -1,65 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="fr">
+<head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Password generator</title>
-  </head>
-  <body class="min-h-screen bg-gray-100 flex items-center justify-center">
-    <div class="min-h-screen bg-slate-100 flex justify-center items-center">
-      <div class="bg-white p-8 rounded-lg shadow-sm w-96">
-        <h1 class="text-xl text-gray-700 mb-6 text-center">
-          Password Generator
+    <title>Générateur de Mot de Passe</title>
+    <script type="module" src="/src/main.ts"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center p-4">
+    <div class="max-w-md w-full backdrop-blur-sm bg-gray-800/50 p-8 rounded-2xl shadow-2xl border border-gray-700">
+        <h1 class="text-2xl font-bold text-white mb-8 text-center">
+            Générateur de Mot de Passe
         </h1>
-
-        <div class="mb-4">
-          <input
-            id="password-output"
-            type="text"
-            readonly
-            class="w-full p-2 bg-gray-50 rounded border text-center"
-            placeholder="Password"
-          />
+        
+        <div class="mb-6 relative group">
+            <div class="relative">
+                <input
+                    id="password-output"
+                    type="text"
+                    readonly
+                    class="w-full p-4 bg-gray-900/50 rounded-lg border border-gray-700 text-center text-white text-lg font-mono focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                    placeholder="Votre mot de passe"
+                />
+                <button 
+                    id="copy-button"
+                    class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors duration-200 px-3 py-1 rounded-md hover:bg-gray-700/50"
+                >
+                    Copier
+                </button>
+            </div>
         </div>
 
-        <div class="mb-4">
-          <label class="text-sm text-gray-600 block mb-2">
-            Length: <span id="length-value">12</span>
-          </label>
-          <input
-            id="length-range"
-            type="range"
-            min="8"
-            max="32"
-            value="12"
-            class="w-full"
-          />
+        <div class="mb-6">
+            <div class="flex justify-between items-center mb-2">
+                <label class="text-gray-300">Longueur</label>
+                <span id="length-value" class="text-indigo-400 font-mono">12</span>
+            </div>
+            <input
+                id="length-range"
+                type="range"
+                min="8"
+                max="32"
+                value="12"
+                class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+            />
+            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                <span>8</span>
+                <span>32</span>
+            </div>
         </div>
 
-        <div class="space-y-2 mb-6">
-          <div>
-            <input id="uppercase" type="checkbox" checked />
-            <label class="text-sm text-gray-600 ml-2">Uppercase</label>
-          </div>
-          <div>
-            <input id="numbers" type="checkbox" checked />
-            <label class="text-sm text-gray-600 ml-2">Numbers</label>
-          </div>
-          <div>
-            <input id="symbols" type="checkbox" checked />
-            <label class="text-sm text-gray-600 ml-2">Symbols</label>
-          </div>
+        <div class="space-y-4 mb-8">
+            <div class="flex items-center justify-between p-3 bg-gray-900/30 rounded-lg border border-gray-700/50">
+                <div class="flex items-center">
+                    <input 
+                        id="normal" 
+                        type="checkbox" 
+                        checked 
+                        class="w-4 h-4 accent-indigo-500 bg-gray-900 border-gray-700 rounded"
+                    />
+                    <label class="text-gray-300 ml-3">Minuscules (a-z)</label>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between p-3 bg-gray-900/30 rounded-lg border border-gray-700/50">
+                <div class="flex items-center">
+                    <input 
+                        id="uppercase" 
+                        type="checkbox" 
+                        class="w-4 h-4 accent-indigo-500 bg-gray-900 border-gray-700 rounded"
+                    />
+                    <label class="text-gray-300 ml-3">Majuscules (A-Z)</label>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between p-3 bg-gray-900/30 rounded-lg border border-gray-700/50">
+                <div class="flex items-center">
+                    <input 
+                        id="numbers" 
+                        type="checkbox" 
+                        class="w-4 h-4 accent-indigo-500 bg-gray-900 border-gray-700 rounded"
+                    />
+                    <label class="text-gray-300 ml-3">Chiffres (0-9)</label>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between p-3 bg-gray-900/30 rounded-lg border border-gray-700/50">
+                <div class="flex items-center">
+                    <input 
+                        id="symbols" 
+                        type="checkbox"
+                        class="w-4 h-4 accent-indigo-500 bg-gray-900 border-gray-700 rounded"
+                    />
+                    <label class="text-gray-300 ml-3">Symboles (!@#$%^&*)</label>
+                </div>
+            </div>
         </div>
 
         <button
-          id="generate"
-          class="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700"
+            id="generate"
+            class="w-full bg-gradient-to-r from-indigo-600 to-indigo-500 text-white py-4 px-6 rounded-lg text-lg font-medium hover:from-indigo-500 hover:to-indigo-400 transition-all duration-200 shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800"
         >
-          Generate
+            Générer
         </button>
-      </div>
     </div>
-  </body>
+</body>
 </html>
