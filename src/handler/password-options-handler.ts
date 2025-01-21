@@ -9,11 +9,11 @@ export default function passwordOptionsHandler() {
   const lengthValue: HTMLInputElement =
     document.querySelector("#length-value")!;
 
-  passwordSize.addEventListener("change", (event) => {
+  passwordSize.addEventListener("change", (_) => {
     lengthValue.textContent = passwordSize.value;
   });
 
-  generate?.addEventListener("click", (event) => {
+  generate?.addEventListener("click", (_) => {
     console.log(checkPasswordOptions.values(), checkPasswordOptions);
 
     const checkPasswordContent = [...checkPasswordOptions] as any;
